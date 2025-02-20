@@ -1,5 +1,42 @@
+/* Estilo base para el párrafo */
 p {
-    color: blue;
-    font-weight: bold;
-  }
-  
+  color: blue;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  margin: 10px 0;
+}
+
+/* Estilo para el contenedor principal */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+/* Estilo para el encabezado */
+h1 {
+  color: #333;
+  font-size: 24px;
+  font-family: 'Verdana', sans-serif;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Estilo para mensajes de estado */
+.status-success {
+  color: green;
+}
+
+.status-warning {
+  color: orange;
+}
+
+.status-error {
+  color: red;
+}

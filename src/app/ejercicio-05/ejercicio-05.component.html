@@ -1,7 +1,12 @@
-<h2>Lista de Sistemas Operativos</h2>
-@for (os of operatingSystems; track os.id) {
-  {{os.name}}
-}
-@for (user of users; track user.id) {
-    <p> {{user.name}}</p>
+<div class="container">
+  <h2>Lista de Sistemas Operativos</h2>
+  <ul>
+    @for (os of operatingSystems; track os.id) {
+      <li>{{os.name}}</li>
+    }
+  </ul>
+  <h2>Lista de nombres </h2>
+  @for (user of users; track user.id) {
+    <p>{{user.name}}</p> <br>
   }
+</div>

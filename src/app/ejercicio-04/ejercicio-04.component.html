@@ -1,13 +1,13 @@
-@if (isServerRunning) {
-    <p>Server Running!</p>
-  
+<div class="container">
+  <h1>Estado del Servidor</h1>
+  @if (isServerRunning) {
+    <p class="status-success">Server Running!</p>
     @if (isLoggedIn) {
       <p>Welcome back, Marcos Jesús Ríos Durán!</p>
     } @else {
-      <p>You must log in!</p>
+      <p class="status-warning">You must log in!</p>
     }
-  
   } @else {
-    <p>The website is offline.</p>
+    <p class="status-error">The website is offline.</p>
   }
-  
+</div>
