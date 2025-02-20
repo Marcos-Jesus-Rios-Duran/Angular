@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class Ejercicio04Component {
   isServerRunning = true;
-  isLoggedIn = false;
+  isLoggedIn = true;
 }

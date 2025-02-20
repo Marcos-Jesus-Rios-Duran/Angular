@@ -1,0 +1,9 @@
+.spacer {
+    flex: 1 1 auto;
+  }
+  
+  /* Utiliza clases de Tailwind para mejorar los estilos */
+  mat-toolbar {
+    @apply bg-blue-500 text-white;
+  }
+  
