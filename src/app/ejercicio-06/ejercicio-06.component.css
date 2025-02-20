@@ -1,0 +1,38 @@
+/* Estilo base para el contenido editable */
+.editable-content {
+    border: 2px solid transparent;
+    padding: 15px;
+    border-radius: 10px;
+    min-height: 100px;
+    background-color: #e6fffa; /* Fondo amigable */
+    font-size: 18px;
+    color: #333;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo para el contenido editable al enfocarse */
+  .editable-content:focus {
+    border-color: #00796b; /* Color del borde al enfocarse */
+    box-shadow: 0 0 10px rgba(0, 121, 107, 0.5);
+    background-color: #ccf0e4; /* Cambio de color de fondo al enfocarse */
+  }
+  
+  /* Efecto de entrada (animación) */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .editable-content {
+    animation: fadeIn 0.6s ease;
+  }
+  
+  /* Estilo para resaltar texto seleccionado */
+  ::selection {
+    background: #00796b; /* Fondo del texto seleccionado */
+    color: #fff; /* Color del texto seleccionado */
+  }
+  

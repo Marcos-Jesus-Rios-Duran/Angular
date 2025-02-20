@@ -1,0 +1,13 @@
+@if (isServerRunning) {
+    <p>Server Running!</p>
+  
+    @if (isLoggedIn) {
+      <p>Welcome back, Marcos Jesús Ríos Durán!</p>
+    } @else {
+      <p>You must log in!</p>
+    }
+  
+  } @else {
+    <p>The website is offline.</p>
+  }
+  

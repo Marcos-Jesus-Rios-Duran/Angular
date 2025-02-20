@@ -1,0 +1,12 @@
+*{
+    .textoSaludo{
+        font-weight: bolder;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    .textoResaltado{
+        color: rgb(255, 0, 0);
+        font-weight: bolder;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: xx-large;
+    }
+}
