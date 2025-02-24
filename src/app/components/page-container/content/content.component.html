@@ -1,5 +1,17 @@
-<!-- content.component.html -->
-<div class="p-4 bg-green shadow rounded h-full">
+<!-- Page Container -->
+<div class="flex flex-col h-screen">
+  <!-- Breadcrumb -->
+  <div class="h-5vh">
+    <app-breadcrumb></app-breadcrumb>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="flex-1 p-4 bg-yellow-100 shadow rounded overflow-auto">
     <router-outlet></router-outlet>
   </div>
-  
+
+  <!-- Footer -->
+  <div class="h-5vh">
+    <app-footer></app-footer>
+  </div>
+</div>

@@ -7,11 +7,11 @@ import { Ejercicio05Component } from './pages/ejercicio-05/ejercicio-05.componen
 import { Ejercicio06Component } from './pages/ejercicio-06/ejercicio-06.component'; 
 
 export const routes: Routes = [
-  { path: 'page1', component: Ejercicio01Component },
-  { path: 'page2', component: Ejercicio02Component },
-  { path: 'page3', component: Ejercicio03Component },
-  { path: 'page4', component: Ejercicio04Component },
-  { path: 'page5', component: Ejercicio05Component },
-  { path: 'page6', component: Ejercicio06Component },
+  { path: 'page1', component: Ejercicio01Component, data: { breadcrumb: 'Ejercicio 01' } },
+  { path: 'page2', component: Ejercicio02Component, data: { breadcrumb: 'Ejercicio 02' } },
+  { path: 'page3', component: Ejercicio03Component, data: { breadcrumb: 'Ejercicio 03' } },
+  { path: 'page4', component: Ejercicio04Component, data: { breadcrumb: 'Ejercicio 04' } },
+  { path: 'page5', component: Ejercicio05Component, data: { breadcrumb: 'Ejercicio 05' } },
+  { path: 'page6', component: Ejercicio06Component, data: { breadcrumb: 'Ejercicio 06' } },
   { path: '**', redirectTo: 'page1' }
 ];
