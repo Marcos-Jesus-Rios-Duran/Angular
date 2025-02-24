@@ -1,0 +1,18 @@
+<div class="page-container flex h-screen">
+  <!-- Sidebar -->
+  <div class="sidebar bg-gray-800 text-white w-1/6 transition-transform duration-300"
+       [ngClass]="{'-translate-x-full': !isSidebarVisible}">
+    <app-sidebar></app-sidebar>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="main-content w-5/6 p-4">
+    <app-content></app-content>
+  </div>
+
+  <!-- Botón para mostrar/ocultar Sidebar -->
+  <button (click)="toggleSidebar()" 
+          class="toggle-button fixed top-4 left-4 bg-blue-600 text-white px-4 py-2 rounded">
+    ☰
+  </button>
+</div>
