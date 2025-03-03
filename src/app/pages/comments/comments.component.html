@@ -1,0 +1,10 @@
+<h3>Comentarios</h3>
+<ul *ngIf="comments.length > 0; else noComments">
+  <li *ngFor="let comment of comments">{{ comment }}</li>
+</ul>
+
+<ng-template #noComments>
+  <p>No hay comentarios aún.</p>
+</ng-template>
+
+<button (click)="loadMoreComments()">Cargar más comentarios</button>
