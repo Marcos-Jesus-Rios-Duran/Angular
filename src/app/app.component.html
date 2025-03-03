@@ -1,5 +1,11 @@
-<app-navbar></app-navbar>
-<app-page-container></app-page-container>
+<div *ngIf="!isLoggedIn">
+  <app-login (loginSuccess)="onLoginSuccess($event)"></app-login>
+</div>
+<div *ngIf="isLoggedIn">
+  <app-navbar [userName]="userName" (logout)="onLogout()"></app-navbar>
+  <app-page-container></app-page-container>
+</div>
+
 
 
 <!--

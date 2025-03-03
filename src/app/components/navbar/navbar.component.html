@@ -1,19 +1,20 @@
-<!-- navbar.component.html -->
-<nav class="bg-blue-600 text-white p-4 flex justify-between items-center ">
-  <!-- Menú Principal -->
-  <div class="flex-1">
-      <span class="text-lg font-semibold">  </span>
-  </div>
-
-  <!-- Icono Usuario -->
-  <div class="relative group ml-auto">
+<nav class="bg-blue-600 text-white p-4 flex justify-between items-center">
+    <!-- Menú Principal -->
+    <div class="flex-1"></div> <!-- Elemento vacío para empujar el contenido hacia el centro -->
+  
+    <div class="text-center">
+      <span class="text-2xl font-bold italic tracking-wider">{{ userName }}</span>
+    </div>
+  
+    <!-- Icono Usuario -->
+    <div class="relative group ml-auto flex items-center space-x-2">
       <button class="flex items-center space-x-2 hover:bg-blue-700 px-3 py-2 rounded">
-          <span>Usuario</span>
-          <img class="w-8 h-8 rounded-full" src="https://via.placeholder.com/40" />
+        <img class="w-8 h-8 rounded-full" src="https://via.placeholder.com/40" />
       </button>
       <div class="absolute hidden group-hover:block bg-white text-black shadow-lg right-0 mt-2 w-40 rounded-lg overflow-hidden">
-          <a class="block px-4 py-2 hover:bg-gray-200">Perfil</a>
-          <a class="block px-4 py-2 hover:bg-gray-200">Cerrar sesión</a>
+        <a class="block px-4 py-2 hover:bg-gray-200">Perfil</a>
+        <a class="block px-4 py-2 hover:bg-gray-200" (click)="onLogout()">Cerrar sesión</a>
       </div>
-  </div>
-</nav>
+    </div>
+  </nav>
+  
