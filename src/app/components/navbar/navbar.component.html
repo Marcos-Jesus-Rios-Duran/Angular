@@ -26,10 +26,13 @@
          [ngClass]="{'hidden': !isSidebarVisible}">
       <ul class="flex flex-col">
         <li *ngFor="let ejercicio of ejercicios">
-          <a class="block py-2 px-4 text-gray-300 hover:text-yellow-400 hover:bg-gray-600 transition-colors duration-200 font-[Forml]" [routerLink]="'/page' + ejercicio" routerLinkActive="active">
+          <a class="block py-2 px-4 text-gray-300 hover:text-yellow-400 hover:bg-gray-600 transition-colors duration-200 font-[Forml]" 
+             [routerLink]="'/page' + ejercicio" 
+             routerLinkActive="active"
+             (click)="onEjercicioClick()">
             Ejercicio {{ ejercicio }}
           </a>
-        </li>
+        </li>        
       </ul>
     </div>
   </div>

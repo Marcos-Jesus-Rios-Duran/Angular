@@ -21,6 +21,9 @@ export class NavbarComponent {
   toggleSidebar() {
     this.isSidebarVisible = !this.isSidebarVisible;
   }
+  onEjercicioClick(){
+    this.isSidebarVisible = false;
+  }
 
   // Evento para emitir el logout
   onLogout() {
