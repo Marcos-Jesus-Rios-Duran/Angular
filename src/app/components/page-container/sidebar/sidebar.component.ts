@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sidebar',
@@ -17,17 +17,28 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     // Suscríbete a los eventos de navegación para capturar la ruta activa
     this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(() => {
-        this.updateContent(); // Actualiza el contenido cuando cambie la ruta
+      .pipe(
+        filter(event => event instanceof NavigationEnd),
+        map(() => this.activatedRoute),
+        map(route => {
+          while (route.firstChild) route = route.firstChild;
+          return route;
+        }),
+        filter(route => route.outlet === 'primary'),
+        map(route => route.snapshot)
+      )
+      .subscribe(snapshot => {
+        this.updateContent(snapshot.routeConfig?.path); // Actualiza el contenido cuando cambie la ruta
       });
   }
 
   // Actualiza el contenido en base a la ruta activa
-  updateContent() {
-    const route = this.activatedRoute.snapshot.firstChild?.routeConfig?.path;
-
+  updateContent(route: string | undefined) {
     switch (route) {
+      case 'page0':
+        this.title = "Título de la práctica 0";
+        this.description = "Descripción de la práctica 0: Este es el ejercicio 0.";
+        break;
       case 'page1':
         this.title = "Título de la práctica 1";
         this.description = "Descripción de la práctica 1: Este es el ejercicio 1.";

@@ -1,19 +1,23 @@
-<div class="page-container flex h-screen">
-  <!-- Sidebar -->
-  <div class="sidebar bg-gray-800 text-white w-1/6 transition-transform duration-300"
-       [ngClass]="{'-translate-x-full': !isSidebarVisible}">
-    <app-sidebar></app-sidebar>
-  </div>
+<!-- Contenedor Principal -->
+<div class="flex flex-col h-[95vh] overflow-hidden">
+  <!-- Contenedor Medio (Sidebar + Contenido) -->
+  <div class="flex flex-[0.92] overflow-hidden">
+    <!-- Sidebar -->
+    <div class="sidebar bg-gray-800 text-white w-1/6 transition-transform duration-300 h-full"
+         [ngClass]="{'-translate-x-full': !isSidebarVisible}">
+      <app-sidebar></app-sidebar>
+    </div>
 
-  <!-- Contenido principal -->
-  <div class="main-content transition-all duration-300"
-       [ngClass]="{'w-full': !isSidebarVisible, 'w-5/6': isSidebarVisible}">
-    <app-content></app-content>
+    <!-- Contenido Principal -->
+    <div class="main-content flex-1 p-0.5 bg-yellow-700 shadow rounded h-full overflow-hidden"
+         [ngClass]="{'w-full': !isSidebarVisible, 'w-5/6': isSidebarVisible}">
+      <app-content></app-content>
+    </div>
   </div>
 
   <!-- Botón para mostrar/ocultar Sidebar -->
   <button (click)="toggleSidebar()" 
-          class="toggle-button fixed top-4 left-4 bg-blue-500 text-white px-4 py-2 rounded">
-    ☰
+          class="toggle-button fixed top-2 left-2 bg-blue-500 text-white px-4 py-2 rounded">
+    ☰ Descripcion
   </button>
 </div>

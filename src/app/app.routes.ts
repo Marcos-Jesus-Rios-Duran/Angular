@@ -9,8 +9,11 @@ import { Ejercicio07Component } from './pages/ejercicio-07/ejercicio-07.componen
 import { Ejercicio08Component } from './pages/ejercicio-08/ejercicio-08.component'; 
 import { Ejercicio09Component } from './pages/ejercicio-09/ejercicio-09.component'; 
 import { Ejercicio10Component } from './pages/ejercicio-10/ejercicio-10.component';
+import { LandingPageComponent } from './components/page-container/landing-page/landing-page.component';
 
 export const routes: Routes = [
+  { path: '', redirectTo: 'page0', pathMatch: 'full' },
+  { path: 'page0', component: LandingPageComponent, data: { breadcrumb: 'Ejercicio 00' } },
   { path: 'page1', component: Ejercicio01Component, data: { breadcrumb: 'Ejercicio 01' } },
   { path: 'page2', component: Ejercicio02Component, data: { breadcrumb: 'Ejercicio 02' } },
   { path: 'page3', component: Ejercicio03Component, data: { breadcrumb: 'Ejercicio 03' } },
@@ -21,5 +24,5 @@ export const routes: Routes = [
   { path: 'page8', component: Ejercicio08Component, data: { breadcrumb: 'Ejercicio 08' } },
   { path: 'page9', component: Ejercicio09Component, data: { breadcrumb: 'Ejercicio 09' } },
   { path: 'page10', component: Ejercicio10Component, data: { breadcrumb: 'Ejercicio 10' } },
-  { path: '**', redirectTo: 'page1' }
+  { path: '**', redirectTo: 'page0' }
 ];

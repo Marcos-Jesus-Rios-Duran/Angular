@@ -1,17 +1,17 @@
 <!-- Page Container -->
-<div class="flex flex-col h-screen">
+<div class="flex flex-col h-[95vh] overflow-hidden">
   <!-- Breadcrumb -->
-  <div class="h-5vh">
+  <div class="h-[5vh]">
     <app-breadcrumb></app-breadcrumb>
   </div>
 
   <!-- Contenido principal -->
-  <div class="flex-1 p-4 bg-yellow-100 shadow rounded overflow-auto">
+  <div class="flex-[0.88] p-2 bg-yellow-100 shadow rounded h-full overflow-hidden">
     <router-outlet></router-outlet>
   </div>
 
   <!-- Footer -->
-  <div class="h-5vh">
+  <div class="h-[7vh]">
     <app-footer></app-footer>
   </div>
 </div>
