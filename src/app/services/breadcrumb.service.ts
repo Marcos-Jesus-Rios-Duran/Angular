@@ -1,40 +1,50 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Router, Event, NavigationEnd } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { filter, distinctUntilChanged } from 'rxjs/operators';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { filter, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BreadcrumbService {
-  private breadcrumbs = new BehaviorSubject<Array<{ label: string, url: string }>>([]);
-  breadcrumbs$ = this.breadcrumbs.asObservable();
+  private breadcrumbsSubject = new BehaviorSubject<any[]>([]);  // Aquí almacenamos las migas de pan.
+  breadcrumbs$ = this.breadcrumbsSubject.asObservable();
 
-  constructor(private router: Router) {
-    this.router.events.pipe(
-      filter((event: Event) => event instanceof NavigationEnd),
-      distinctUntilChanged()
-    ).subscribe(() => {
-      const root: ActivatedRouteSnapshot = this.router.routerState.snapshot.root;
-      const breadcrumbs: Array<{ label: string, url: string }> = [];
-      this.addBreadcrumb(root, [], breadcrumbs);
-      this.breadcrumbs.next(breadcrumbs);
-    });
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+    this.router.events
+      .pipe(
+        filter(event => event instanceof NavigationEnd),
+        map(() => this.activatedRoute),
+        map(route => {
+          while (route.firstChild) route = route.firstChild;
+          return route;
+        }),
+        filter(route => route.outlet === 'primary')
+      )
+      .subscribe(route => {
+        this.updateBreadcrumbs(route.snapshot);
+      });
   }
 
-  private addBreadcrumb(route: ActivatedRouteSnapshot, parentUrl: string[], breadcrumbs: Array<{ label: string, url: string }>) {
-    // Verificar si 'routeConfig' y 'data' existen antes de acceder a ellos
-    if (route.routeConfig?.data?.breadcrumb) {
-      const url = [...parentUrl, route.url.map(segment => segment.path).join('/')].join('/');
-      breadcrumbs.push({
-        label: route.routeConfig.data.breadcrumb,
-        url: `/${url}`
-      });
-    }
+  // Método para actualizar las migas de pan
+  private updateBreadcrumbs(routeSnapshot: any) {
+    const breadcrumbs = this.createBreadcrumbs(routeSnapshot);
+    this.breadcrumbsSubject.next(breadcrumbs);
+  }
 
-    // Procesar el hijo de la ruta actual si existe
-    if (route.firstChild) {
-      this.addBreadcrumb(route.firstChild, parentUrl.concat(route.url.map(segment => segment.path)), breadcrumbs);
+  // Crear las migas de pan en base a la ruta
+  private createBreadcrumbs(routeSnapshot: any): any[] {
+    const breadcrumbs: any[] = [];
+    let currentRoute = routeSnapshot;
+    while (currentRoute) {
+      if (currentRoute.data && currentRoute.data['breadcrumb']) {
+        breadcrumbs.unshift({
+          label: currentRoute.data['breadcrumb'],
+          url: currentRoute.url.map((segment: any) => segment.path).join('/')
+        });
+      }
+      currentRoute = currentRoute.parent;
     }
+    return breadcrumbs;
   }
 }

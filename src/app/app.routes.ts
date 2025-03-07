@@ -13,7 +13,7 @@ import { LandingPageComponent } from './components/page-container/landing-page/l
 
 export const routes: Routes = [
   { path: '', redirectTo: 'page0', pathMatch: 'full' },
-  { path: 'page0', component: LandingPageComponent, data: { breadcrumb: 'Ejercicio 00' } },
+  { path: 'page0', component: LandingPageComponent, data: { breadcrumb: 'Ejercicio 0' } },
   { path: 'page1', component: Ejercicio01Component, data: { breadcrumb: 'Ejercicio 01' } },
   { path: 'page2', component: Ejercicio02Component, data: { breadcrumb: 'Ejercicio 02' } },
   { path: 'page3', component: Ejercicio03Component, data: { breadcrumb: 'Ejercicio 03' } },
