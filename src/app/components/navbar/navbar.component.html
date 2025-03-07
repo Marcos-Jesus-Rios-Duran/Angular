@@ -1,20 +1,50 @@
-<nav class="bg-blue-600 text-white p-4 flex justify-between items-center">
-    <!-- Menú Principal -->
-    <div class="flex-1"></div> <!-- Elemento vacío para empujar el contenido hacia el centro -->
+<nav class="bg-blue-600 text-white p-2 flex justify-between items-center">
+  <!-- Menú Principal - Lado izquierdo -->
+  <div class=""></div>
+  <div class="flex space-x-4 pr-2 justify-end">
+    <span class="text-2xl font-bold italic tracking-wider font-[Forml]">{{ userName }}</span>
+  </div>
+
+  <!-- Menú Desplegable -->
+  <button routerLink="/data-table" class="bg-black text-white font-bold py-2 px-4 rounded transition-transform transform hover:-translate-y-1 hover:bg-blue-700 hover:scale-110 font-[Forml] shadow-lg">
+    Data Table
+  </button>
+  <button routerLink="/dashboard" class="bg-black text-white font-bold py-2 px-4 rounded transition-transform transform hover:-translate-y-1 hover:bg-blue-700 hover:scale-110 font-[Forml] shadow-lg">
+    Dashboard
+  </button>
+
+  <div class="relative">
+    <button (click)="toggleSidebar()" class="flex items-center space-x-2 bg-black text-white py-2 px-4 rounded transition-transform transform hover:bg-blue-700 hover:scale-110 font-[Forml] shadow-lg">
+      <span>Ejercicio</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" [attr.d]="isSidebarVisible ? 'M5.293 9.293a1 1 0 011.414 0L10 12.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' : 'M5.293 10.293a1 1 0 011.414 0L10 7.414l3.293 3.293a1 1 0 111.414-1.414l-4-4a1 1 0 01-1.414 0l-4 4a1 1 0 010 1.414z'" clip-rule="evenodd" />
+      </svg>
+    </button>
   
-    <div class="text-center">
-      <span class="text-2xl font-bold italic tracking-wider">{{ userName }}</span>
+    <!-- Submenú -->
+    <div class="absolute flex flex-col bg-gray-700 text-white shadow-lg right-0 mt-2 w-48 rounded-lg overflow-hidden"
+         [ngClass]="{'hidden': !isSidebarVisible}">
+      <ul class="flex flex-col">
+        <li *ngFor="let ejercicio of ejercicios">
+          <a class="block py-2 px-4 text-gray-300 hover:text-yellow-400 hover:bg-gray-600 transition-colors duration-200 font-[Forml]" [routerLink]="'/page' + ejercicio" routerLinkActive="active">
+            Ejercicio {{ ejercicio }}
+          </a>
+        </li>
+      </ul>
     </div>
-  
-    <!-- Icono Usuario -->
-    <div class="relative group ml-auto flex items-center space-x-2">
-      <button class="flex items-center space-x-2 hover:bg-blue-700 px-3 py-2 rounded">
-        <img class="w-8 h-8 rounded-full" src="https://via.placeholder.com/40" />
+  </div>
+
+  <!-- Información del Usuario - Lado derecho -->
+  <div class="flex items-center space-x-4">
+    <div class="relative group">
+      <button class="flex items-center space-x-2 hover:bg-blue-700 px-3 py-2 rounded bg-black text-white font-[Forml] shadow-lg transition-transform transform hover:scale-110">
+        <img class="w-8 h-8 rounded-full" [src]="userImageUrl" alt="Usuario" />
+        <span>{{ userName }}</span>
       </button>
-      <div class="absolute hidden group-hover:block bg-white text-black shadow-lg right-0 mt-2 w-40 rounded-lg overflow-hidden">
-        <a class="block px-4 py-2 hover:bg-gray-200">Perfil</a>
-        <a class="block px-4 py-2 hover:bg-gray-200" (click)="onLogout()">Cerrar sesión</a>
+      <div class="absolute hidden group-hover:block bg-white text-black shadow-lg right-0 mt-2 w-40 rounded-lg overflow-hidden transition-all duration-300 ease-in-out">
+        <a class="block px-4 py-2 hover:bg-gray-200 font-[Forml]" (click)="onLogout()">Perfil</a>
+        <a class="block px-4 py-2 hover:bg-gray-200 font-[Forml]" (click)="onLogout()">Cerrar sesión</a>
       </div>
     </div>
-  </nav>
-  
+  </div>
+</nav>

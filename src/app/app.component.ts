@@ -26,26 +26,32 @@ export class AppComponent implements OnInit {
   userName: string = ''; // Agregar nombre de usuario
 
   ngOnInit() {
-    // Recuperar el estado de login y el nombre de usuario desde localStorage
-    const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
-    const storedUserName = localStorage.getItem('userName');
-    this.isLoggedIn = storedIsLoggedIn === 'true';
-    this.userName = storedUserName || '';
+    if (typeof window !== 'undefined' && window.localStorage) {
+      // Recuperar el estado de login y el nombre de usuario desde localStorage
+      const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
+      const storedUserName = localStorage.getItem('userName');
+      this.isLoggedIn = storedIsLoggedIn === 'true';
+      this.userName = storedUserName || '';
+    }
   }
 
   onLoginSuccess(name: string) {
     this.isLoggedIn = true;
     this.userName = name;
-    // Guardar el estado de login y el nombre de usuario en localStorage
-    localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('userName', name);
+    if (typeof window !== 'undefined' && window.localStorage) {
+      // Guardar el estado de login y el nombre de usuario en localStorage
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('userName', name);
+    }
   }
 
   onLogout() {
     this.isLoggedIn = false;
     this.userName = '';
-    // Limpiar el estado de login y el nombre de usuario en localStorage
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('userName');
+    if (typeof window !== 'undefined' && window.localStorage) {
+      // Limpiar el estado de login y el nombre de usuario en localStorage
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('userName');
+    }
   }
 }
